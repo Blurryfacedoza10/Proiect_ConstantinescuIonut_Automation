@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suita Generala de Testare Automation">
+
+
+
+    <test name="Teste API - DummyJSON">
+        <classes>
+            <class name="tests.api.DummyJsonApiTests"/>
+        </classes>
+    </test>
+
+    <test name="Teste UI - E-commerce Website">
+        <classes>
+            <class name="tests.ui.LoginTests"/>
+            <class name="tests.ui.SearchAndCartTests"/>
+            <class name="tests.ui.ContactTests"/>
+            <class name="tests.ui.SortTests"/>
+        </classes>
+    </test>
+
+</suite>
