@@ -13,7 +13,6 @@ import io.restassured.http.ContentType;
 import utils.TestConfig;
 import utils.TestListener;
 import static io.restassured.RestAssured.given;
-import static models.UserApi.*;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 
@@ -38,14 +37,14 @@ public class DummyJsonApiTests {
 
     @Test(priority = 2)
     public void createUser_Returns201() {
-        UserApi newUser = builder()
-                .firstName(TestData.API_USER_FIRST_NAME)
-                .lastName(TestData.API_USER_LAST_NAME)
+        UserApi user = UserApi.builder()
+                .firstName("Ionut")
+                .lastName("User")
                 .build();
 
         given()
                 .contentType(ContentType.JSON)
-                .body(newUser)
+                .body(user)
                 .when()
                 .post("/users/add")
                 .then()
@@ -56,14 +55,15 @@ public class DummyJsonApiTests {
 
     @Test(priority = 3)
     public void updateUser_Returns200() {
-        UserApi updatedUser = builder()
-                .firstName(TestData.API_USER_FIRST_NAME)
+
+        UserApi user = UserApi.builder()
+                .firstName("Test")
                 .lastName(TestData.API_USER_NEW_LAST_NAME)
                 .build();
 
         given()
                 .contentType(ContentType.JSON)
-                .body(updatedUser)
+                .body(user)
                 .when()
                 .put("/users/1")
                 .then()
